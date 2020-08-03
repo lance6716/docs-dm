@@ -200,7 +200,7 @@ query-status
 > Couldn't acquire global lock, snapshots will not be consistent: Access denied for user 'root'@'%' (using password: YES)
 > ```
 >
-> 此时如果能接受不使用 FTWL 来确保 dump 文件与 metadata 的一致或上游能暂时停止写入，可以通过为 `mydumpers` 下的 `extra-args` 添加 `--no-locks` 参数来进行绕过，具体方法为：
+> 此时如果能接受不使用 FTWL 来确保 dump 文件与 metadata 的一致或上游能暂时停止写入，可以通过为 `mydumper` 下的 `extra-args` 添加 `--no-locks` 参数来进行绕过，具体方法为：
 >
 > 1. 使用 `stop-task` 停止当前由于不能正常 dump 而已经转为 paused 的任务
 > 2. 将原 `task.yaml` 中的 `extra-args: "-B test_db -T test_table"` 更新为 `extra-args: "-B test_db -T test_table --no-locks"`
